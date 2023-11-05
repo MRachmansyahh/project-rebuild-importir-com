@@ -95,3 +95,5 @@ const ModulPage = () => {
 };
 
 export default ModulPage;
+
+
