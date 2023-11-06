@@ -48,7 +48,7 @@ const ProductCarousel = () => {
             key={index}
             style={{ display: index === selectedImageIndex ? "block" : "none" }}
           >
-            <Image src={product.image} w="100%" h="auto" borderRadius={"lg"} />
+            <Image src={product.image} alt="Product" w="100%" h="auto" borderRadius={"lg"} />
           </div>
         ))}
         <Box

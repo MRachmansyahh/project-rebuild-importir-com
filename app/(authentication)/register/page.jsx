@@ -93,7 +93,7 @@ export default function RegisterPage() {
             </Checkbox>
             <Stack pt={6}>
               <Flex>
-                <Text me={2}>Don't have an account?</Text>
+                <Text me={2}>Already have an account?</Text>
                 <Text fontWeight={"bold"} color={"rgb(255, 214, 0)"}>
                   <Link href="/login">Login</Link>
                 </Text>

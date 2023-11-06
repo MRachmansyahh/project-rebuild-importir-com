@@ -117,7 +117,7 @@ const Left = () => {
                   }
                 >
                   <Box display="flex" alignItems="center" gap={2}>
-                    <Image src={link.image} />
+                    <Image src={link.image} alt={link.category} />
                     <Text fontSize={"sm"}>{link.category}</Text>
                   </Box>
                   <Box>

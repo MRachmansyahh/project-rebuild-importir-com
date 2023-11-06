@@ -129,7 +129,7 @@ export default function LoginPage() {
                   <Link href="/register">Forgot Password?</Link>
                 </Text>
                 <Flex justify={"space-between"} flexWrap={"wrap"} mt={2}>
-                  <Text>Don't have an account?</Text>
+                  <Text>Don not have an account?</Text>
                   <Text fontWeight="bold">
                     <Link href="/register">Register</Link>
                   </Text>

@@ -232,7 +232,7 @@ const CreatePage = () => {
             <Box>
               <Text fontWeight={"bold"}>Promo</Text>
               <Text mb={2} fontSize={"sm"}>
-                Promo code can't be used with CBM Balance
+                Promo code can not be used with CBM Balance
               </Text>
               <Button fontSize={"sm"} bg={"green.500"} color={"white"}>
                 Apply Promo

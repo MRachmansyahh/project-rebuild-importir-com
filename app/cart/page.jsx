@@ -34,7 +34,7 @@ const CartPage = () => {
 
       <Box color={"gray.600"} textAlign={"center"} p={6} my={4}>
         <Heading>Whoa, your shopping cart is empty</Heading>
-        <Text mt={4}>Let's fill it with your dream items!</Text>
+        <Text mt={4}>Let is fill it with your dream items!</Text>
       </Box>
     </Box>
   );

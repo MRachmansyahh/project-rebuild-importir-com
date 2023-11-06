@@ -34,7 +34,7 @@ const ProductCards = () => {
       <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 5 }} gap={4}>
         {productsToDisplay.map((product) => (
           <Card key={product.id} maxW={"2xs"} boxShadow={"xl"}>
-            <Image src={product.image} borderTopRadius={"lg"} />
+            <Image src={product.image} alt={product.title} borderTopRadius={"lg"} />
             <CardBody>
               <Box mb={4}>
                 <Text fontSize={"sm"} fontWeight={"bold"} mb={2}>
