@@ -45,7 +45,7 @@ export default function Countdown() {
         </Flex>
       ) : (
         <Text fontSize="4xl" fontStyle="italic" color="white">
-          Time's up!
+          Time is up!
         </Text>
       )}
     </Box>
