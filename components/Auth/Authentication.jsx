@@ -1,8 +1,10 @@
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "../../api/firebase";
+import { auth } from "../../service/firebaseApp";
 import React, { useEffect, useState } from "react";
 import HeaderLogout from "../navbar/Header/HeaderLogout";
 import HeaderLogin from "../navbar/Header/HeaderLogin";
+import SeminarNonMemberCards from "../card/SeminarNonMemberCards";
+import SeminarMemberCards from "../card/SeminarMemberCards ";
 
 const Authentication = () => {
   const [isLogin, setIsLogin] = useState(null);
@@ -20,17 +22,7 @@ const Authentication = () => {
     };
   }, []);
 
-  const userSignOut = () => {
-    signOut(auth)
-      .then(() => {
-        console.log("Sign out success");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  return <>{isLogin === null ? <HeaderLogout /> : <HeaderLogin />}</>;
+  return <>{isLogin === null ? <HeaderLogout /> : <HeaderLogin /> }</>;
 };
 
 export default Authentication;

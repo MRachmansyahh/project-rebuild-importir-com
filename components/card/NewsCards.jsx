@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import {
   Box,
@@ -18,34 +17,22 @@ import {
   Link,
   SimpleGrid,
 } from "@chakra-ui/react";
-import { newsCards } from "@/constants";
+import { getNews } from "@/service/api";
 
-const NewsCards = ({ layout }) => {
-  const [displayCount, setDisplayCount] = useState(4);
-  const [selectedCard, setSelectedCard] = useState(null);
-  const showAll = displayCount >= newsCards.length;
+const NewsCards = async ({ layout }) => {
 
-  const handleLoadMore = () => {
-    setDisplayCount(showAll ? 4 : displayCount + 4);
-  };
-
-  const handleCardClick = (card) => {
-    setSelectedCard(card);
-  };
-
-  const closeModal = () => {
-    setSelectedCard(null);
-  };
-
+  const newsCards = await getNews();
+  console.log(newsCards);
+  
   return (
     <SimpleGrid
       as="div"
       columns={{ base: 1, sm: 2, md: 4 }}
       display={layout === "vertical" ? "block" : "grid"}
     >
-      {newsCards.slice(0, displayCount).map((card) => (
+      {newsCards.map((card) => (
         <Card
-          key={card.id}
+          key={card.title}
           mx={2}
           my={4}
           cursor={"pointer"}
@@ -58,15 +45,12 @@ const NewsCards = ({ layout }) => {
         >
           <CardBody>
             <Flex justifyContent="flex-end">
-              <Icon as={ArrowForwardIcon} fontSize="xl" mr={2} />
+              <ArrowForwardIcon fontSize="xl" mr={2} />
             </Flex>
-            <Image src={card.image} alt={card.title} />
+            <Image src={card.featured_image} alt={card.title} />
             <Flex flexDir="column" mt={4}>
               <Text fontSize="sm" textAlign="start" fontWeight="bold">
                 {card.title}
-              </Text>
-              <Text fontSize="sm" textAlign="start" marginTop={2}>
-                {card.description}
               </Text>
             </Flex>
           </CardBody>
@@ -91,7 +75,7 @@ const NewsCards = ({ layout }) => {
                 <Image
                   mb={4}
                   borderRadius="lg"
-                  src={selectedCard.image}
+                  src={selectedCard.featured_image}
                   alt={selectedCard.title}
                 />
                 <Text fontWeight="bold">{selectedCard.title}</Text>

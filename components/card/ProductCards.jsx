@@ -19,6 +19,7 @@ import { products } from "@/constants";
 import { FiShoppingCart } from "react-icons/fi";
 import { formatRupiah } from "@/constants";
 import Link from "next/link";
+import ChristmasCards from "./ChristmasCards";
 
 const ProductCards = () => {
   const [displayCount, setDisplayCount] = useState(5); // Display first 5 products
@@ -64,6 +65,7 @@ const ProductCards = () => {
           </Button>
         </Flex>
       )}
+      <ChristmasCards/>
     </Box>
   );
 };

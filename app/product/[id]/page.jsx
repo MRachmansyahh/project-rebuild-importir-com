@@ -1,5 +1,6 @@
 "use client";
 
+import AddToCartButton from "@/components/button/AddToCart";
 import ProductCarousel from "@/components/carousel/Carousel";
 import {
   Box,
@@ -20,6 +21,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { FaRegHeart } from "react-icons/fa";
+import { getProdukNatal } from "@/service/api";
 
 const DetailProduct = () => {
   return (
@@ -69,7 +71,7 @@ const DetailProduct = () => {
               </Flex>
             </Box>
             <Flex w={"10%"} justifyContent={"center"} alignItems={"center"}>
-              <Icon fontSize={"3xl"} as={FaRegHeart} />
+              <FaRegHeart fontSize={"3xl"}/>
             </Flex>
           </Flex>
 
@@ -223,9 +225,7 @@ const DetailProduct = () => {
               </Stack>
               <Stack fontSize={"sm"}>
                 <Text>Minimum Order 200</Text>
-                <Button h={6} fontSize={"sm"} bg={"rgb(255, 214, 0)"}>
-                  Add to cart
-                </Button>
+                <AddToCartButton/>
               </Stack>
             </Flex>
           </Box>

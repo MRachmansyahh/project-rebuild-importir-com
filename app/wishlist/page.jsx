@@ -1,8 +1,10 @@
 import ProductCards from "@/components/card/ProductCards";
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import React from "react";
+import { useWishlist } from "@/context/WishlistContext";
 
-const whishlistPage = () => {
+const whishlistPage = ({product}) => {
+  const { wishlist } = useWishlist()
   return (
     <Box p={4} h={"100vh"}>
       <Flex justifyContent={"space-between"}>
@@ -13,7 +15,11 @@ const whishlistPage = () => {
       </Flex>
 
       <Box>
-        <ProductCards />
+        {wishlist.map((product) => (
+          <Box key={product.id}>
+            <Text>{product.name}</Text>
+          </Box>
+        ))}
       </Box>
     </Box>
   );

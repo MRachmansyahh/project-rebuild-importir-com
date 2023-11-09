@@ -212,21 +212,6 @@ export const sectionCards = [
   },
 ];
 
-export const seminars = [
-  {
-    image: "https://old.importir.com/public-images/tangerang.png",
-    city: "Tangerang",
-    place: "ONLINE",
-    date: "25 Nov 2023",
-  },
-  {
-    image: "https://old.importir.com/public-images/pekalongan.png",
-    city: "Sidoarjo",
-    place: "OFFLINE",
-    date: "25 Nov 2023",
-  },
-];
-
 export const products = [
   {
     id: 1,
