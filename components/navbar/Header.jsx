@@ -16,7 +16,6 @@ import { BiCategory } from "react-icons/bi";
 import Link from "next/link";
 import { SearchWeb } from "./Header/Search";
 import Authentication from "../Auth/Authentication";
-import { useState } from "react";
 
 export default function Header() {
   const { isOpen, onOpen, onClose } = useDisclosure();

@@ -10,7 +10,9 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
+import { useCart } from "@/context/CartContext";
 const CartPage = () => {
+  const { cart } = useCart()
   return (
     <Box minH={"100vh"}>
       <Box bg={"white"} p={6}>
@@ -23,18 +25,12 @@ const CartPage = () => {
         <Text>Back</Text>
       </Button>
 
-      <Flex justifyContent={"center"} my={4}>
-        <Image
-          src="/emptycart.png"
-          alt="Logo"
-          width={"30%"}
-          alignItems={"center"}
-        />
-      </Flex>
-
-      <Box color={"gray.600"} textAlign={"center"} p={6} my={4}>
-        <Heading>Whoa, your shopping cart is empty</Heading>
-        <Text mt={4}>Let is fill it with your dream items!</Text>
+      <Box>
+        {cart.map((product) => (
+          <Box key={product.id}>
+            <Text>{product.name}</Text>
+          </Box>
+        ))}
       </Box>
     </Box>
   );

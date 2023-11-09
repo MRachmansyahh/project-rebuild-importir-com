@@ -14,8 +14,12 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { newsCardsPage } from "@/constants";
+import { getNews } from "@/service/api";
 
-const NewsPage = () => {
+const NewsPage = async () => {
+  const news = await getNews()
+  console.log(news)
+
   return (
     <Box bg={"white"} borderRadius={"xl"} boxShadow={"xl"} p={4} m={4}>
       <Text fontWeight={"bold"} fontSize={"xl"} my={4}>

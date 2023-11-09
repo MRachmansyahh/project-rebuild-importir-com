@@ -11,8 +11,10 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import SectionCards from "../card/SectionCards";
-import { seminars } from "@/constants";
 import Link from "next/link";
+import { isUserLoggedIn } from "@/service/firebaseApp";
+import SeminarMemberCards from "../card/SeminarMemberCards ";
+import SeminarNonMemberCards from "../card/SeminarNonMemberCards";
 
 const Section = () => {
   return (
@@ -37,46 +39,11 @@ const Section = () => {
 
       <Box bg="white" p={4} borderRadius={"xl"} boxShadow={"xl"}>
         <Text fontWeight={"bold"} fontSize={"xl"}>
-          Seminar for non-member
+          {isUserLoggedIn() ? "Seminar Member" : "Seminar Non Member"}
         </Text>
 
         <Box>
-          {seminars.map((seminar) => (
-            <Box key={seminar.city}>
-              <Flex
-                justifyContent={"space-between"}
-                alignItems="center"
-                my={4}
-                flexDir={{ base: "column", sm: "row" }}
-              >
-                <Avatar name={seminar.place} src={seminar.image} />
-
-                <Flex
-                  flexDir="column"
-                  alignItems={{ base: "center", sm: "flex-start" }}
-                  flex="1"
-                  m={4}
-                >
-                  <Text>
-                    {seminar.city}{" "}
-                    <span
-                      style={{
-                        backgroundColor: "#FF8080",
-                        borderRadius: "4px",
-                        padding: "2px",
-                      }}
-                    >
-                      {seminar.place}
-                    </span>
-                  </Text>
-                  <Text>{seminar.date}</Text>
-                </Flex>
-
-                <Button colorScheme="green">Register now</Button>
-              </Flex>
-              <Divider />
-            </Box>
-          ))}
+          {isUserLoggedIn() ? <SeminarMemberCards/> : <SeminarNonMemberCards/>}
         </Box>
       </Box>
     </SimpleGrid>

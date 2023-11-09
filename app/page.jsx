@@ -1,14 +1,15 @@
 import React from "react";
 import HeroSection from "@/components/homepage/layout";
 import Section from "@/components/section/Section";
-import ProductCards from "@/components/card/ProductCards";
-
+import ChristmasCards from "@/components/card/ChristmasCards";
+import ProductUnderSeratus from "@/components/card/UnderSeratus";
 const HomePage = () => {
   return (
     <React.Fragment>
       <HeroSection />
       <Section />
-      <ProductCards />
+      <ChristmasCards />
+      <ProductUnderSeratus />
     </React.Fragment>
   );
 };

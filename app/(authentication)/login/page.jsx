@@ -18,10 +18,9 @@ import {
 import Link from "next/link";
 import { GrMail } from "react-icons/gr";
 import { MdVpnKey } from "react-icons/md";
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { auth } from "../../../api/firebase";
+import { SignIn, GetSignInErrorMessage } from "@/service/firebaseApp";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -39,15 +38,14 @@ export default function LoginPage() {
   };
 
   const handleLogin = () => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Login berhasil
-        const user = userCredential.user;
+    SignIn(email, password)
+      .then((user) => {
         console.log("Logged in Success:", user);
         router.push("/");
 
         toast({
           title: "Successfully logged in",
+          description: `Welcome back ${user}`,
           status: "success",
           duration: 3000,
           isClosable: true,
