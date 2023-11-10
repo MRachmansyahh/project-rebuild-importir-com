@@ -8,6 +8,7 @@ import Navigation from "@/components/navbar/layout";
 import LayoutProvider from "./LayoutProvider";
 import { CartProvider } from "@/context/CartContext";
 import { WishlistProvider } from "@/context/WishlistContext";
+import ProductLayout from "./product/layout";
 
 export const metadata = {
   title: "importir.com",
@@ -25,14 +26,11 @@ export default function RootLayout({ children }) {
       <body style={{ backgroundColor: "#F1EFEF" }}>
         <ChakraProvider>
           <LayoutProvider>
-            <CartProvider>
-              <WishlistProvider>
-                {children}
-
-                <ConsultationButton />
-                <WhatsappButton />
-              </WishlistProvider>
-            </CartProvider>
+            <ProductLayout>
+            {children}
+            <ConsultationButton />
+            <WhatsappButton />
+            </ProductLayout>
           </LayoutProvider>
         </ChakraProvider>
       </body>

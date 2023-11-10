@@ -77,14 +77,14 @@ export const GetTimestamp = () => {
 }
 
 
-export const isUserLoggedIn = () => {
-  return new Promise((resolve) => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      unsubscribe();
-      resolve(user);
-    });
-  });
-};
+export const isUserLoggedIn = (callback) => {
+  onAuthStateChanged(auth, (user));
+  if (user) {
+    callback(true, user);
+  } else {
+    callback(false, null);
+  }
+}
 
 
 export default firebaseApp

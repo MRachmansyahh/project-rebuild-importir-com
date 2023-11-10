@@ -45,11 +45,10 @@ export async function getProdukNatal() {
     const { slug, info, categories } = response.data.data;
     const products = categories[0].products;
     const detailProductIds = products.map((product) => product.product_id);
-
     return { slug, info, products, detailProductIds };
   } catch (error) {
     console.log("ERROR PRODUK NATAL:", error);
-    return { slug: "", info: "", products: [], detailProduct: [] };
+    return { slug: "", info: "", products: [], detailProductIds: [] };
   }
 }
 
@@ -65,8 +64,8 @@ export async function getProdukUnderSeratus() {
     );
     const { slug, info, categories } = response.data.data;
     const products = categories[0].products;
-
-    return { slug, info, products };
+    const detailProductIds = products.map((product) => product.product_id);
+    return { slug, info, products, detailProductIds };
   } catch (error) {
     console.log("ERROR PRODUK UNDER SERATUS:", error);
   }

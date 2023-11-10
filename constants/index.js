@@ -136,29 +136,6 @@ export const sidebarLinks = [
   },
 ];
 
-export const carouselImages = [
-  {
-    image:
-      "https://importir-new-hk.s3.ap-east-1.amazonaws.com/general/WkjZ2oV3gpNBrUYLtDrqAe9mfZX10qfSptIDvVa6.png",
-  },
-  {
-    image:
-      "https://importir-new-hk.s3.ap-east-1.amazonaws.com/general/By2cXXuojEE9KaW5UEFQg2ZTRBtvOenoLI0YAc1l.png",
-  },
-  {
-    image:
-      "https://importir-new-hk.s3.ap-east-1.amazonaws.com/general/v4YpGtKCyHl3LokVllsRyOyOcUYucLntacylAiLy.png",
-  },
-  {
-    image:
-      "https://importir-new-hk.s3.ap-east-1.amazonaws.com/general/FtdjACYPtSlKiZA7pFdNooRdZRMMJFEqfiCmVdy8.png",
-  },
-  {
-    image:
-      "https://importir-new-hk.s3.ap-east-1.amazonaws.com/general/Pp5vq3bj56p2nER8QtGE6f7NNqgZORbHcSmqMU3z.png",
-  },
-];
-
 export const sectionCards = [
   {
     id: 1,
@@ -305,34 +282,42 @@ export const products = [
 
 export const categories = [
   {
+    id: 1,
     image: "https://img.alicdn.com/tfs/TB1rq3mh3HqK1RjSZFkXXX.WFXa-130-130.jpg",
     title: "Women",
   },
   {
+    id: 1,
     image: "https://img.alicdn.com/tfs/TB1rq3mh3HqK1RjSZFkXXX.WFXa-130-130.jpg",
     title: "Women",
   },
   {
+    id: 1,
     image: "https://img.alicdn.com/tfs/TB1rq3mh3HqK1RjSZFkXXX.WFXa-130-130.jpg",
     title: "Women",
   },
   {
+    id: 1,
     image: "https://img.alicdn.com/tfs/TB1rq3mh3HqK1RjSZFkXXX.WFXa-130-130.jpg",
     title: "Women",
   },
   {
+    id: 1,
     image: "https://img.alicdn.com/tfs/TB1rq3mh3HqK1RjSZFkXXX.WFXa-130-130.jpg",
     title: "Women",
   },
   {
+    id: 1,
     image: "https://img.alicdn.com/tfs/TB1rq3mh3HqK1RjSZFkXXX.WFXa-130-130.jpg",
     title: "Women",
   },
   {
+    id: 1,
     image: "https://img.alicdn.com/tfs/TB1rq3mh3HqK1RjSZFkXXX.WFXa-130-130.jpg",
     title: "Women",
   },
   {
+    id: 1,
     image: "https://img.alicdn.com/tfs/TB1rq3mh3HqK1RjSZFkXXX.WFXa-130-130.jpg",
     title: "Women",
   },

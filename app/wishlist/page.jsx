@@ -3,7 +3,7 @@ import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import { useWishlist } from "@/context/WishlistContext";
 
-const whishlistPage = ({product}) => {
+const WhishlistPage = ({product}) => {
   const { wishlist } = useWishlist()
   return (
     <Box p={4} h={"100vh"}>
@@ -25,4 +25,4 @@ const whishlistPage = ({product}) => {
   );
 };
 
-export default whishlistPage;
+export default WhishlistPage;

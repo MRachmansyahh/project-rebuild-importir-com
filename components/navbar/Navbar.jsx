@@ -25,15 +25,15 @@ export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const rates = [
-    { value: '', label: 'Rp. 2,296 - (RMB)' },
-    { value: '', label: 'Rp. 291.18 - (Peso)' },
-    { value: '', label: 'Rp. 16,537 - (USD)' },
+    { id: 1, value: '', label: 'Rp. 2,296 - (RMB)' },
+    { id: 2, value: '', label: 'Rp. 291.18 - (Peso)' },
+    { id: 3, value: '', label: 'Rp. 16,537 - (USD)' },
   ]
   
   const countries = [
-    { value: '', label: 'USA' },
-    { value: '', label: 'Korea' },
-    { value: '', label: 'China' },
+    { id: 1, value: '', label: 'USA' },
+    { id: 2, value: '', label: 'Korea' },
+    { id: 3, value: '', label: 'China' },
   ]
 
   return (
@@ -50,7 +50,7 @@ export default function Navbar() {
           <HStack alignItems={'center'}>
             <Select height={5} size={"sm"} placeholder="Rates">
                 {rates.map((rate) => (
-                    <option key={rate.value} value={rate.value}>
+                    <option key={rate.id} value={rate.value}>
                     {rate.label}
                     </option>
                 ))}
@@ -73,7 +73,7 @@ export default function Navbar() {
             <HStack alignItems={'center'} marginStart={4}>
                 <Select height={5} size={"sm"} placeholder="Country">
                     {countries.map((country) => (
-                        <option key={country.value} value={country.value}>
+                        <option key={country.id} value={country.value}>
                         {country.label}
                         </option>
                     ))}

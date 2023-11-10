@@ -44,7 +44,7 @@ import {
                   {formatRupiah(product.price)}
                 </Text>
               </Box>
-              <Link href={"/product/[slug]?slug=1"}>
+              <Link key={product.product_id} href={`/product/under-seratus/${product.product_id}`} passHref>
                 <Button variant="solid" colorScheme="green" w={"100%"} h={7}>
                   <FiShoppingCart />
                   <Text ms={4}>Order Now</Text>

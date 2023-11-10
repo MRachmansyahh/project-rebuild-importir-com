@@ -1,4 +1,4 @@
-import CrowdfundCards from "@/components/card/CrowdfundCards";
+import CrowdfundCards from "@/app/crowdfund/CrowdfundCards";
 import {
   Box,
   Button,

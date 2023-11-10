@@ -7,16 +7,20 @@ import {
   Button,
   HStack,
 } from "@chakra-ui/react";
+import axios from "axios";
 import Link from "next/link";
-import { getListSeminarNonMember } from "@/service/api";
 
 const SeminarNonMemberCards = async () => {
-  const data = await getListSeminarNonMember();
+
+  const response = await axios.get(
+    "https://new-admin.importir.com/api/home/get-list-org-schedule"
+  );
+  const data = response.data.data;
 
   console.log(data);
 
   return (
-    <Box>
+    <Box overflowY="auto" maxH={"calc(100vh - 300px)"} sx={{ margin: "10px" }}>
       {data.map((data) => (
         <Box key={data.id}>
           <Flex

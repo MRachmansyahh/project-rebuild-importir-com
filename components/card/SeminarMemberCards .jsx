@@ -1,3 +1,4 @@
+import { getListSeminarMember } from "@/service/api";
 import {
   Box,
   Flex,
@@ -11,11 +12,11 @@ import Link from "next/link";
 
 
 const SeminarMemberCards = async () => {
-
+  const data = await getListSeminarMember();
   console.log(data)
 
   return (
-    <Box>
+    <Box overflowY="auto" maxH={"calc(100vh - 300px)"} sx={{ margin: "10px" }}>
       {data.map((data) => (
         <Box key={data.id}>
           <Flex

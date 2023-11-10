@@ -6,7 +6,7 @@ const CategoryPage = () => {
       <SimpleGrid p={4} spacing={2} column={5} minChildWidth={"100px"}>
         {categories.map((category) => (
           <Box
-            key={category.title}
+            key={category.id}
             bg={"white"}
             rounded={"xl"}
             cursor={"pointer"}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import NewsCards from "../card/NewsCards";
+import NewsCards from "../../app/news/NewsCards";
 import { Box, Flex, Image, Text, calc } from "@chakra-ui/react";
 
 const Right = () => {

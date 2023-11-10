@@ -1,40 +1,44 @@
-"use client";
+'use client'
 
-import AddToCartButton from "@/components/button/AddToCart";
-import ProductCarousel from "@/components/carousel/Carousel";
-import {
-  Box,
-  Button,
-  Divider,
-  Flex,
-  Icon,
-  Input,
-  Select,
-  SimpleGrid,
-  Stack,
-  Table,
-  TableContainer,
-  Tbody,
-  Td,
-  Text,
-  Tr,
-} from "@chakra-ui/react";
-import React from "react";
-import { FaRegHeart } from "react-icons/fa";
+import { Box, Button, Divider, Flex, Image, Input, Select, SimpleGrid, Stack, Table, TableContainer, Tbody, Td, Text, Tr } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 import { getProdukNatal } from "@/service/api";
+import ProductCarousel from "@/components/carousel/Carousel";
+import { FaRegHeart } from "react-icons/fa";
+import AddToCartButton from "@/components/button/AddToCart";
+import { formatRupiah } from "@/constants";
 
-const DetailProduct = () => {
+
+const ProductPage = ({params}) => {
+  const [detail, setDetail] = useState({});
+
+  const getProduct = async () => {
+    try {
+      const { products } = await getProdukNatal();
+      console.log(products);
+      const data = products.find((product) => product.product_id === params.id);
+      console.log(data);
+      setDetail(data);
+    } catch (error) {
+      console.error("ERROR PRODUK NATAL:", error);
+    }
+  };
+
+  useEffect(() => {
+    getProduct();
+  }, []);
+
   return (
     <Box>
       <SimpleGrid columns={{ base: 1, md: 2 }} gap={4} p={4}>
         <Box bg={"white"} borderRadius={"lg"}>
-          <ProductCarousel />
+          <ProductCarousel/>
         </Box>
 
         <Box>
           <Flex bg={"white"} p={4} borderRadius={"lg"}>
             <Box w={"90%"}>
-              <Text fontWeight={"bold"}>Porduct Title</Text>
+              <Text fontWeight={"bold"}>{detail.title}</Text>
               <Text fontSize={"xs"} color={"gray.400"} py={2}>
                 Supplier: Product Supplier
               </Text>
@@ -194,15 +198,16 @@ const DetailProduct = () => {
         <Box bg={"white"} borderRadius={"lg"} p={4}>
           <Box bg={"white"} p={4} borderRadius={"lg"} mt={4}>
             <Text fontWeight={"bold"}>Order</Text>
-            <Flex h={"70px"}></Flex>
+            <Flex h={"70px"} my={2}>
+              <Image src={detail.image} alt={detail.title} />
+            </Flex>
             <Divider />
             <Text fontSize={"sm"} fontWeight={"bold"} mt={2}>
-              Product Name
+            {detail.title}
             </Text>
             <Flex justifyContent={"space-between"} alignItems={"center"} mb={2}>
               <Box fontSize={"xs"}>
-                <Text>PRODUCT NAME</Text>
-                <Text>Product Price</Text>
+                <Text>{formatRupiah(detail.price)}</Text>
               </Box>
               <Box fontSize={"xs"}>
                 <Text textAlign={"center"}>Stock:</Text>
@@ -235,17 +240,12 @@ const DetailProduct = () => {
         <Text fontWeight={"bold"}>Product Description</Text>
         <Box>
           <Text>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam id
-            harum aspernatur saepe sit reprehenderit culpa nesciunt tempore!
-            Molestias id, rerum illum eius, quisquam officiis nam iure fuga
-            dolor possimus aut adipisci est mollitia natus soluta repellendus
-            perferendis. Quas saepe odit voluptates aliquid iure consequatur
-            veritatis culpa eligendi repudiandae id.
+            {detail?.description}
           </Text>
         </Box>
       </Box>
     </Box>
-  );
+  )
 };
 
-export default DetailProduct;
+export default ProductPage;

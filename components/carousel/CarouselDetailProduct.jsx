@@ -3,31 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { Box, Button, Image, Text } from "@chakra-ui/react";
 
-const ProductCarousel = () => {
+const CarouselDetailProduct = ({ productImages }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-
-  const products = [
-    {
-      image:
-        "https://importir-new-hk.s3.ap-east-1.amazonaws.com/general/WkjZ2oV3gpNBrUYLtDrqAe9mfZX10qfSptIDvVa6.png",
-    },
-    {
-      image:
-        "https://importir-new-hk.s3.ap-east-1.amazonaws.com/general/By2cXXuojEE9KaW5UEFQg2ZTRBtvOenoLI0YAc1l.png",
-    },
-    {
-      image:
-        "https://importir-new-hk.s3.ap-east-1.amazonaws.com/general/v4YpGtKCyHl3LokVllsRyOyOcUYucLntacylAiLy.png",
-    },
-    {
-      image:
-        "https://importir-new-hk.s3.ap-east-1.amazonaws.com/general/FtdjACYPtSlKiZA7pFdNooRdZRMMJFEqfiCmVdy8.png",
-    },
-    {
-      image:
-        "https://importir-new-hk.s3.ap-east-1.amazonaws.com/general/Pp5vq3bj56p2nER8QtGE6f7NNqgZORbHcSmqMU3z.png",
-    },
-  ];
 
   const handleImageChange = (index) => {
     setSelectedImageIndex(index);
@@ -36,21 +13,21 @@ const ProductCarousel = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setSelectedImageIndex((prevIndex) =>
-        prevIndex === products.length - 1 ? 0 : prevIndex + 1
+        prevIndex === productImages.length - 1 ? 0 : prevIndex + 1
       );
     }, 3000);
     return () => clearInterval(interval);
-  })
+  }, [productImages]);
 
   return (
     <Box position="relative">
       <Box position="relative" overflow="hidden">
-        {products.map((product, index) => (
+        {productImages.map((image, index) => (
           <div
             key={index}
             style={{ display: index === selectedImageIndex ? "block" : "none" }}
           >
-            <Image src={product.image} alt="Product" w="100%" h="auto" borderRadius={"lg"} />
+            <Image src={image} alt={`Product Image ${index}`} w="100%" h="auto" borderRadius={"lg"} />
           </div>
         ))}
         <Box
@@ -60,7 +37,7 @@ const ProductCarousel = () => {
           display="flex"
           justifyContent="center"
         >
-          {products.map((_, buttonIndex) => (
+          {productImages.map((_, buttonIndex) => (
             <Button
               key={buttonIndex}
               size="2"
@@ -79,4 +56,4 @@ const ProductCarousel = () => {
   );
 };
 
-export default ProductCarousel;
+export default CarouselDetailProduct;

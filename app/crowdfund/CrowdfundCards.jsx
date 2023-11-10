@@ -15,7 +15,7 @@ import {
 import { crowdfundCards } from "@/constants";
 import { FiShoppingCart } from "react-icons/fi";
 import { formatRupiah } from "@/constants";
-import Countdown from "../countdown/Countdown";
+import Countdown from "../../components/countdown/Countdown";
 
 const CrowdfundCards = () => {
   return (

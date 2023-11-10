@@ -1,6 +1,4 @@
-"use client";
-
-import NewsCards from "@/components/card/NewsCards";
+import NewsCards from "@/app/news/NewsCards";
 import Carousel from "@/components/carousel/Carousel";
 import {
   Box,
@@ -13,12 +11,8 @@ import {
   SimpleGrid,
   Text,
 } from "@chakra-ui/react";
-import { newsCardsPage } from "@/constants";
-import { getNews } from "@/service/api";
 
-const NewsPage = async () => {
-  const news = await getNews()
-  console.log(news)
+const NewsPage = () => {
 
   return (
     <Box bg={"white"} borderRadius={"xl"} boxShadow={"xl"} p={4} m={4}>

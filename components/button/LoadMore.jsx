@@ -3,11 +3,11 @@
 import { Button } from "@chakra-ui/react";
 import { useState } from "react";
 
-function LoadMoreButton({ initialCount, increment }) {
-  const [count, setCount] = useState(initialCount);
+function LoadMoreButton() {
+  const [count, setCount] = useState(5);
 
   const handleLoadMore = () => {
-    setCount(count + increment);
+    setCount(count + 5);
   };
 
   return <Button onClick={handleLoadMore} bg="rgba(255, 214, 0)" h={7}>Load More</Button>;

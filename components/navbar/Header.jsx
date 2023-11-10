@@ -15,14 +15,14 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { BiCategory } from "react-icons/bi";
 import Link from "next/link";
 import { SearchWeb } from "./Header/Search";
-import Authentication from "../Auth/Authentication";
+import Authentication from "../Auth/AuthHeader";
 
 export default function Header() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <Box bg={"rgb(255, 214, 0)"} pt={2} px={4} boxShadow={"md"} >
+      <Box bg={"rgb(255, 214, 0)"} pt={2} px={4} boxShadow={"md"}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <Flex alignItems={"center"}>
             <IconButton
@@ -33,9 +33,9 @@ export default function Header() {
               onClick={isOpen ? onClose : onOpen}
             />
             <HStack>
-            <Link href="/">
-              <Image src="/logo2.png" alt="Logo" />
-            </Link>
+              <Link href="/">
+                <Image src="/logo2.png" alt="Logo" />
+              </Link>
             </HStack>
 
             <HStack spacing={8} alignItems={"center"}>
