@@ -1,28 +1,32 @@
-'use client'
+"use client";
 
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useReducer } from "react";
 
+// Membuat context untuk CartContext
 const CartContext = createContext();
 
+// Reducer untuk mengelola state cart
 const cartReducer = (state, action) => {
   switch (action.type) {
-    case 'ADD_TO_CART':
+    case "ADD_TO_CART":
       return [...state, action.payload];
-    // Add other cases as needed
+    // Tambahkan case lain jika diperlukan
 
     default:
       return state;
   }
 };
 
+// Komponen provider untuk CartContext
 const CartProvider = ({ children }) => {
   const [cart, dispatch] = useReducer(cartReducer, []);
 
+  // Fungsi untuk menambahkan item ke dalam cart
   const addToCart = (product) => {
-    dispatch({ type: 'ADD_TO_CART', payload: product });
+    dispatch({ type: "ADD_TO_CART", payload: product });
   };
-  // Add other functions as needed
 
+  // Menyediakan nilai context kepada komponen-komponen di dalamnya
   return (
     <CartContext.Provider value={{ cart, addToCart }}>
       {children}
@@ -30,12 +34,13 @@ const CartProvider = ({ children }) => {
   );
 };
 
+// Hook untuk menggunakan CartContext di dalam komponen
 const useCart = () => {
   const context = useContext(CartContext);
   if (!context) {
-    throw new Error('useCart must be used within a CartProvider');
+    throw new Error("ERROR BROK");
   }
   return context;
 };
 
-export { CartProvider, useCart };
+export { CartProvider, useCart, CartContext };

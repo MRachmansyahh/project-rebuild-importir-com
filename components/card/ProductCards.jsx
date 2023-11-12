@@ -19,7 +19,7 @@ import { products } from "@/constants";
 import { FiShoppingCart } from "react-icons/fi";
 import { formatRupiah } from "@/constants";
 import Link from "next/link";
-import ChristmasCards from "./ChristmasCards";
+import ChristmasCards from "../../app/product/christmas/page";
 
 const ProductCards = () => {
   const [displayCount, setDisplayCount] = useState(5); // Display first 5 products
@@ -35,7 +35,11 @@ const ProductCards = () => {
       <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 5 }} gap={4}>
         {productsToDisplay.map((product) => (
           <Card key={product.id} maxW={"2xs"} boxShadow={"xl"}>
-            <Image src={product.image} alt={product.title} borderTopRadius={"lg"} />
+            <Image
+              src={product.image}
+              alt={product.title}
+              borderTopRadius={"lg"}
+            />
             <CardBody>
               <Box mb={4}>
                 <Text fontSize={"sm"} fontWeight={"bold"} mb={2}>
@@ -65,7 +69,7 @@ const ProductCards = () => {
           </Button>
         </Flex>
       )}
-      <ChristmasCards/>
+      <ChristmasCards />
     </Box>
   );
 };

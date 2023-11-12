@@ -1,3 +1,5 @@
+"use client";
+
 import { ChevronDownIcon, HamburgerIcon } from "@chakra-ui/icons";
 import {
   Avatar,
@@ -19,9 +21,16 @@ import Link from "next/link";
 import { BsDropbox, BsSuitHeart } from "react-icons/bs";
 import { FiShoppingCart } from "react-icons/fi";
 import { useToast } from "@chakra-ui/react";
+import { useCart } from "@/context/CartContext";
+import { useWishlist } from "@/context/WishlistContext";
 
 const HeaderLogin = () => {
   const toast = useToast();
+  const { cart } = useCart();
+  const { wishlist } = useWishlist();
+
+  const cartItem = cart.length;
+  const wishlistItem = wishlist.length;
   const userSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -54,7 +63,7 @@ const HeaderLogin = () => {
               p={1}
               color="white"
             >
-              0
+              {wishlistItem}
             </Badge>
           </Button>
         </Link>
@@ -73,7 +82,7 @@ const HeaderLogin = () => {
               p={1}
               color="white"
             >
-              0
+              {cartItem}
             </Badge>
           </Button>
         </Link>

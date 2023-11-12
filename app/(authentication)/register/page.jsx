@@ -24,7 +24,7 @@ import {
 } from "@/service/firebaseApp";
 import { SetDocument } from "@/service/firebaseApp";
 import { useForm } from "react-hook-form";
-``
+``;
 export default function RegisterPage() {
   const toast = useToast();
   const router = useRouter();
@@ -50,17 +50,15 @@ export default function RegisterPage() {
     const phoneNumberAsNumber = parseInt(phonenumber, 10);
     try {
       SignUp(email, password);
-      SetDocument(
-        `users/${email}`,
-        {
-          fullname,
-          phonenumber: phoneNumberAsNumber,
-          address,
-          email,
-          country,
-          package: selectedPackage,
-          createdAt: timestamp,
-        })
+      SetDocument(`users/${email}`, {
+        fullname,
+        phonenumber: phoneNumberAsNumber,
+        address,
+        email,
+        country,
+        package: selectedPackage,
+        createdAt: timestamp,
+      });
       router.push("/login");
 
       toast({
@@ -107,7 +105,11 @@ export default function RegisterPage() {
 
                 <FormControl id="phonenumber" isRequired>
                   <FormLabel>Phone Number</FormLabel>
-                  <Input type="number" w={"100%"} {...register("phonenumber")} />
+                  <Input
+                    type="number"
+                    w={"100%"}
+                    {...register("phonenumber")}
+                  />
                 </FormControl>
               </Flex>
               <FormControl id="address" isRequired>
@@ -121,12 +123,24 @@ export default function RegisterPage() {
               <Flex flexDir={{ base: "column", sm: "row" }} gap={2}>
                 <FormControl id="password" isRequired>
                   <FormLabel>Password</FormLabel>
-                  <Input type="password" w={"100%"} {...register("password")} minLength={8}/>
+                  <Input
+                    type="password"
+                    w={"100%"}
+                    {...register("password")}
+                    minLength={8}
+                  />
                 </FormControl>
 
                 <FormControl id="confirmpassword" isRequired>
                   <FormLabel>Confirm Password</FormLabel>
-                  <Input type="password" w={"100%"} {...register("confirmpassword", { validate: (value) => value === watch("password") })} minLength={8}/>
+                  <Input
+                    type="password"
+                    w={"100%"}
+                    {...register("confirmpassword", {
+                      validate: (value) => value === watch("password"),
+                    })}
+                    minLength={8}
+                  />
                 </FormControl>
               </Flex>
               <Flex flexDir={{ base: "column", sm: "row" }} gap={2}>

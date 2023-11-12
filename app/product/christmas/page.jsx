@@ -1,21 +1,24 @@
 import { formatRupiah } from "@/constants";
-import { useCart } from "@/context/CartContext";
+
 import { getProdukNatal } from "@/service/api";
-import { Box, Button, Card, CardBody, Image, SimpleGrid, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Card,
+  CardBody,
+  Image,
+  SimpleGrid,
+  Text,
+} from "@chakra-ui/react";
 import Link from "next/link";
 import { FiShoppingCart } from "react-icons/fi";
 
 const ChrismastPage = async () => {
-  const { addToCart } = useCart();
   const { products, slug, info, detailProductIds } = await getProdukNatal();
   console.log(products);
   console.log(info);
   console.log(slug);
   console.log(detailProductIds);
-
-  const handleAddToCart = () => {
-    addToCart(detail)
-  }
 
   return (
     <Box p={4}>
@@ -45,8 +48,12 @@ const ChrismastPage = async () => {
                   {formatRupiah(product.price)}
                 </Text>
               </Box>
-              <Link key={product.product_id} href={`/product/christmas/${product.product_id}`} passHref>
-                <Button variant="solid" colorScheme="green" w="100%" onClick={handleAddToCart}>
+              <Link
+                key={product.product_id}
+                href={`/product/christmas/${product.product_id}`}
+                passHref
+              >
+                <Button variant="solid" colorScheme="green" w="100%">
                   <FiShoppingCart />
                   <Text ms={4}>Order Now</Text>
                 </Button>
@@ -58,6 +65,5 @@ const ChrismastPage = async () => {
     </Box>
   );
 };
-
 
 export default ChrismastPage;

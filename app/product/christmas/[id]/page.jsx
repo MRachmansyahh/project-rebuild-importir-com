@@ -1,15 +1,32 @@
-'use client'
+"use client";
 
-import { Box, Button, Divider, Flex, Image, Input, Select, SimpleGrid, Stack, Table, TableContainer, Tbody, Td, Text, Tr } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Divider,
+  Flex,
+  Image,
+  Input,
+  Select,
+  SimpleGrid,
+  Stack,
+  Table,
+  TableContainer,
+  Tbody,
+  Td,
+  Text,
+  Tr,
+} from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { getProdukNatal } from "@/service/api";
 import ProductCarousel from "@/components/carousel/Carousel";
 import { FaRegHeart } from "react-icons/fa";
 import AddToCartButton from "@/components/button/AddToCart";
 import { formatRupiah } from "@/constants";
+import { useCart } from "@/context/CartContext";
+import WishlistButton from "@/components/button/Wishlist";
 
-
-const ProductPage = ({params}) => {
+const ProductPage = ({ params }) => {
   const [detail, setDetail] = useState({});
 
   const getProduct = async () => {
@@ -32,7 +49,7 @@ const ProductPage = ({params}) => {
     <Box>
       <SimpleGrid columns={{ base: 1, md: 2 }} gap={4} p={4}>
         <Box bg={"white"} borderRadius={"lg"}>
-          <ProductCarousel/>
+          <Image src={detail.image} alt={detail.title} />
         </Box>
 
         <Box>
@@ -75,7 +92,7 @@ const ProductPage = ({params}) => {
               </Flex>
             </Box>
             <Flex w={"10%"} justifyContent={"center"} alignItems={"center"}>
-              <FaRegHeart fontSize={"3xl"}/>
+              <WishlistButton product={detail} />
             </Flex>
           </Flex>
 
@@ -203,7 +220,7 @@ const ProductPage = ({params}) => {
             </Flex>
             <Divider />
             <Text fontSize={"sm"} fontWeight={"bold"} mt={2}>
-            {detail.title}
+              {detail.title}
             </Text>
             <Flex justifyContent={"space-between"} alignItems={"center"} mb={2}>
               <Box fontSize={"xs"}>
@@ -230,7 +247,7 @@ const ProductPage = ({params}) => {
               </Stack>
               <Stack fontSize={"sm"}>
                 <Text>Minimum Order 200</Text>
-                <AddToCartButton/>
+                <AddToCartButton product={detail} />
               </Stack>
             </Flex>
           </Box>
@@ -239,13 +256,11 @@ const ProductPage = ({params}) => {
       <Box bg={"white"} p={4} borderRadius={"lg"} mx={4}>
         <Text fontWeight={"bold"}>Product Description</Text>
         <Box>
-          <Text>
-            {detail?.description}
-          </Text>
+          <Text>{detail?.description}</Text>
         </Box>
       </Box>
     </Box>
-  )
+  );
 };
 
 export default ProductPage;

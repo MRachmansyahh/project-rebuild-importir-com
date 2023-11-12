@@ -17,7 +17,7 @@ import Link from "next/link";
 import { SearchWeb } from "./Header/Search";
 import Authentication from "../Auth/AuthHeader";
 
-export default function Header() {
+export default function Header({ products, setFilteredProducts }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -61,7 +61,10 @@ export default function Header() {
           </Flex>
 
           <Box w={"md"}>
-            <SearchWeb />
+            <SearchWeb
+              products={products}
+              setFilteredProducts={setFilteredProducts}
+            />
           </Box>
 
           <Flex alignItems={"center"}>
