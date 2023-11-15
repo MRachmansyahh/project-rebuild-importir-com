@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useState, useEffect } from 'react';
 import {
   Avatar,
   Box,
@@ -28,16 +29,45 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import Link from "next/link";
-import React from "react";
-import ReactDatePicker from "react-datepicker";
-import { AiOutlineIdcard } from "react-icons/ai";
-import { BiTimeFive } from "react-icons/bi";
-import { FiMail } from "react-icons/fi";
-import { GrMapLocation } from "react-icons/gr";
-import { MdOutlineSubscriptions, MdSmartphone } from "react-icons/md";
+import Link from 'next/link';
+import { onAuthStateChanged } from 'firebase/auth';
+import { FiMail } from 'react-icons/fi';
+import { MdOutlineSubscriptions, MdSmartphone } from 'react-icons/md';
+import { AiOutlineIdcard } from 'react-icons/ai';
+import { GrMapLocation } from 'react-icons/gr';
+import { BiTimeFive } from 'react-icons/bi';
+import { GetDocument, auth, db } from '@/service/firebaseApp';
+import { doc, getDoc } from 'firebase/firestore';
 
 const ProfilePage = () => {
+  const [user, setUser] = useState(null);
+  
+  console.log("Data User:", user);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const docRef = doc(db, 'users', user.email)
+        try {
+          const docSnap = await getDoc(docRef);
+          if (docSnap.exists()) {
+            setUser( docSnap.data());
+          } else {
+            console.log("No such document!");
+          }
+        } catch (error) {
+          console.error("Error getting user data:", error);
+        }
+      }
+    });
+  
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+
+
   return (
     <Box minH={"100vh"}>
     <Grid templateColumns="repeat(3, 1fr)" gap={4} m={4}>
@@ -123,31 +153,31 @@ const ProfilePage = () => {
           </TabList>
           <TabPanels>
             <TabPanel m={4} boxShadow={"lg"} p={8}>
-              <Text>Profile Name</Text>
+              <Text fontWeight={"bold"}>{user?.fullname}</Text>
               <Box>
                 <Flex alignItems={"center"} my={4}>
-                  <Icon me={4} fontSize={"2xl"} as={FiMail} />
-                  User Email
+                  <FiMail me={4} fontSize={"2xl"}/>
+                  {user?.email}
                 </Flex>
                 <Flex alignItems={"center"} my={4}>
-                  <Icon me={4} fontSize={"2xl"} as={MdSmartphone} />
-                  User Phone Number
+                  <MdSmartphone me={4} fontSize={"2xl"} />
+                  {user?.phonenumber}
                 </Flex>
                 <Flex alignItems={"center"} my={4}>
-                  <Icon me={4} fontSize={"2xl"} as={AiOutlineIdcard} />
+                  <AiOutlineIdcard me={4} fontSize={"2xl"} />
                   User ID
                 </Flex>
                 <Flex alignItems={"center"} my={4}>
-                  <Icon me={4} fontSize={"2xl"} as={GrMapLocation} />
-                  User Address
+                  <GrMapLocation me={4} fontSize={"2xl"} />
+                  {user?.address}
                 </Flex>
                 <Flex alignItems={"center"} my={4}>
-                  <Icon me={4} fontSize={"2xl"} as={BiTimeFive} />
+                  <BiTimeFive me={4} fontSize={"2xl"} />
                   User Updated
                 </Flex>
                 <Flex alignItems={"center"} my={4}>
-                  <Icon me={4} fontSize={"2xl"} as={MdOutlineSubscriptions} />
-                  User Subscription
+                  <MdOutlineSubscriptions me={4} fontSize={"2xl"} />
+                  {user?.package}
                 </Flex>
               </Box>
             </TabPanel>
