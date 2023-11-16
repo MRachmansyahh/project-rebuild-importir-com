@@ -19,7 +19,7 @@ const CategoryPage = async () => {
               mx="auto"
               my="auto"
               src={category.image}
-              alt={category.category}
+              alt="image"
             />
             <Text textAlign={"center"}>{category.category}</Text>
           </Box>

@@ -110,16 +110,17 @@ export async function getNews() {
 
 export async function getCategories() {
   try {
-    const response = await axios.get(
-      "http://localhost:3000/api/category",
-      {
-        next: {
+    const response = await axios.get('http://localhost:3000/api/category', {
+      headers: {
+        'next': JSON.stringify({
           revalidate: 0,
-        },
-      }
-    );
+        }),
+      },
+    });
+
     return response.data;
   } catch (error) {
-    console.log("ERROR CATEGORIES:", error);
+    console.error('ERROR CATEGORIES:', error);
+    throw error;
   }
 }
