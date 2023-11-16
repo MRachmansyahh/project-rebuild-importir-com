@@ -44,11 +44,13 @@ export async function getProdukNatal() {
     );
     const { slug, info, categories } = response.data.data;
     const products = categories[0].products;
-    const detailProductIds = products.map((product) => product.product_id);
+    const detailProductIds = (product_id) => {
+      return products.find((product) => product.product_id === product_id);
+    }
     return { slug, info, products, detailProductIds };
   } catch (error) {
     console.log("ERROR PRODUK NATAL:", error);
-    return { slug: "", info: "", products: [], detailProductIds: [] };
+    return { slug: "", info: "", products: [], detailProductIds: () => {} };
   }
 }
 
@@ -64,10 +66,13 @@ export async function getProdukUnderSeratus() {
     );
     const { slug, info, categories } = response.data.data;
     const products = categories[0].products;
-    const detailProductIds = products.map((product) => product.product_id);
+    const detailProductIds = (product_id) => {
+      return products.find((product) => product.product_id === product_id);
+    }
     return { slug, info, products, detailProductIds };
   } catch (error) {
     console.log("ERROR PRODUK UNDER SERATUS:", error);
+    return { slug: "", info: "", products: [], detailProductIds: () => {} };
   }
 }
 
@@ -103,11 +108,18 @@ export async function getNews() {
   }
 }
 
-export const getNewss = async () => {
+export async function getCategories() {
   try {
-    const response = await axios.get("https://new-apiv2.importir.com/api/news");
+    const response = await axios.get(
+      "http://localhost:3000/api/category",
+      {
+        next: {
+          revalidate: 0,
+        },
+      }
+    );
     return response.data;
   } catch (error) {
-    console.log("ERROR NEWS:", error);
+    console.log("ERROR CATEGORIES:", error);
   }
-};
+}

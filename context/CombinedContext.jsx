@@ -1,12 +1,11 @@
-import { CartProvider } from "./CartContext"; // Import your existing context providers
+import { CartProvider } from "./CartContext";
 import { WishlistProvider } from "./WishlistContext";
-import { SearchProvider } from "./SearchContext";
 
 const CombinedContext = ({ children }) => {
   return (
     <CartProvider>
       <WishlistProvider>
-        <SearchProvider>{children}</SearchProvider>
+        {children}
       </WishlistProvider>
     </CartProvider>
   );

@@ -1,3 +1,4 @@
+import { getListSeminarNonMember } from "@/service/api";
 import {
   Box,
   Flex,
@@ -7,16 +8,10 @@ import {
   Button,
   HStack,
 } from "@chakra-ui/react";
-import axios from "axios";
 import Link from "next/link";
 
 const SeminarNonMemberCards = async () => {
-
-  const response = await axios.get(
-    "https://new-admin.importir.com/api/home/get-list-org-schedule"
-  );
-  const data = response.data.data;
-
+  const data = await getListSeminarNonMember();
   console.log(data);
 
   return (

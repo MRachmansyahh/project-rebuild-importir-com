@@ -3,8 +3,6 @@ import { auth } from "../../service/firebaseApp";
 import React, { useEffect, useState } from "react";
 import HeaderLogout from "../navbar/Header/HeaderLogout";
 import HeaderLogin from "../navbar/Header/HeaderLogin";
-import SeminarNonMemberCards from "../card/SeminarNonMemberCards";
-import SeminarMemberCards from "../card/SeminarMemberCards ";
 
 const AuthHeader = () => {
   const [isLogin, setIsLogin] = useState(null);

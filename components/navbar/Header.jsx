@@ -14,10 +14,10 @@ import {
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { BiCategory } from "react-icons/bi";
 import Link from "next/link";
-import { SearchWeb } from "./Header/Search";
 import Authentication from "../Auth/AuthHeader";
+import SearchProducts from "../Search/SearchProduct";
 
-export default function Header({ products, setFilteredProducts }) {
+export default function Header() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -60,11 +60,8 @@ export default function Header({ products, setFilteredProducts }) {
             </HStack>
           </Flex>
 
-          <Box w={"md"}>
-            <SearchWeb
-              products={products}
-              setFilteredProducts={setFilteredProducts}
-            />
+          <Box w={"md"} display={{ base: "none", md: "block" }}>
+            <SearchProducts page="search"/>
           </Box>
 
           <Flex alignItems={"center"}>

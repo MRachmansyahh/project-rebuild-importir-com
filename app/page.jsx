@@ -1,15 +1,15 @@
 import React from "react";
 import HeroSection from "@/components/homepage/layout";
 import Section from "@/components/section/Section";
-import ChrismastPage from "./product/christmas/page";
-import ProductUnderSeratus from "./product/under-seratus/page";
+import ProductsPage from "./product/page";
+import HomeModal from "@/components/modal/HomeModal";
 const HomePage = () => {
   return (
     <React.Fragment>
       <HeroSection />
       <Section />
-      <ChrismastPage/>
-      <ProductUnderSeratus/>
+      <ProductsPage/>
+      {/* <HomeModal/> */}
     </React.Fragment>
   );
 };

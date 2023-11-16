@@ -1,8 +1,10 @@
 import Link from "next/link";
-import NewsCards from "../../app/news/NewsCards";
-import { Box, Flex, Image, Text, calc } from "@chakra-ui/react";
+import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import NewsCard from "../card/NewsCard";
+import { getNews } from "@/service/api";
 
-const Right = () => {
+const Right = async () => {
+  const news = await getNews();
   return (
     <Box>
       <Flex
@@ -45,7 +47,7 @@ const Right = () => {
         </Flex>
 
         <Flex overflowY="scroll" maxH="380px">
-          <NewsCards layout={"vertical"} />
+          <NewsCard news={news} layout={"vertical"} />
         </Flex>
       </Box>
     </Box>

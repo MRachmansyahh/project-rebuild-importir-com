@@ -1,17 +1,21 @@
 import { Box } from "@chakra-ui/react";
 import Header from "./Header";
-import { SearchMobile } from "./Header/Search";
 import Navbar from "./Navbar";
+import SearchProducts from "../Search/SearchProduct";
 
-const Navigation = ({ products, setFilteredProducts }) => {
+const Navigation = () => {
   return (
     <Box position="sticky" top="0" zIndex={100}>
       <Navbar />
       <Header />
-      <SearchMobile
-        products={products}
-        setFilteredProducts={setFilteredProducts}
-      />
+      <Box
+        display={{ base: "block", md: "none" }}
+        px={4}
+        py={2}
+        bg={"rgb(255, 214, 0)"}
+      >
+        <SearchProducts page={"search"}/>
+      </Box>
     </Box>
   );
 };

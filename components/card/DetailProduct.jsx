@@ -1,61 +1,38 @@
-"use client";
-
 import {
-  Box,
-  Button,
-  Divider,
-  Flex,
-  Image,
-  Input,
-  Select,
-  SimpleGrid,
-  Stack,
-  Table,
-  TableContainer,
-  Tbody,
-  Td,
-  Text,
-  Tr,
-} from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
-import { getProdukNatal } from "@/service/api";
-import ProductCarousel from "@/components/carousel/Carousel";
-import { FaRegHeart } from "react-icons/fa";
-import AddToCartButton from "@/components/button/AddToCart";
+    Box,
+    Button,
+    Divider,
+    Flex,
+    Image,
+    Input,
+    Select,
+    SimpleGrid,
+    Stack,
+    Table,
+    TableContainer,
+    Tbody,
+    Td,
+    Text,
+    Tr,
+  } from "@chakra-ui/react";
+import React from 'react'
+import WishlistButton from "../button/Wishlist";
 import { formatRupiah } from "@/constants";
-import { useCart } from "@/context/CartContext";
-import WishlistButton from "@/components/button/Wishlist";
+import AddToCartButton from "../button/AddToCart";
 
-const ProductPage = ({ params }) => {
-  const [detail, setDetail] = useState({});
-
-  const getProduct = async () => {
-    try {
-      const { products } = await getProdukNatal();
-      console.log(products);
-      const data = products.find((product) => product.product_id === params.id);
-      console.log(data);
-      setDetail(data);
-    } catch (error) {
-      console.error("ERROR PRODUK NATAL:", error);
-    }
-  };
-
-  useEffect(() => {
-    getProduct();
-  }, []);
-
+const DetailProduct = ({ product }) => {
+  console.log(product);
   return (
     <Box>
       <SimpleGrid columns={{ base: 1, md: 2 }} gap={4} p={4}>
         <Box bg={"white"} borderRadius={"lg"}>
-          <Image src={detail.image} alt={detail.title} />
+          <Image src={product.image} alt={product.title} />
         </Box>
 
         <Box>
           <Flex bg={"white"} p={4} borderRadius={"lg"}>
             <Box w={"90%"}>
-              <Text fontWeight={"bold"}>{detail.title}</Text>
+              <Text fontWeight={"bold"}>{product.title}</Text>
               <Text fontSize={"xs"} color={"gray.400"} py={2}>
                 Supplier: Product Supplier
               </Text>
@@ -92,7 +69,7 @@ const ProductPage = ({ params }) => {
               </Flex>
             </Box>
             <Flex w={"10%"} justifyContent={"center"} alignItems={"center"}>
-              <WishlistButton product={detail} />
+              <WishlistButton product={product} />
             </Flex>
           </Flex>
 
@@ -216,15 +193,15 @@ const ProductPage = ({ params }) => {
           <Box bg={"white"} p={4} borderRadius={"lg"} mt={4}>
             <Text fontWeight={"bold"}>Order</Text>
             <Flex h={"70px"} my={2}>
-              <Image src={detail.image} alt={detail.title} />
+              <Image src={product.image} alt={product.title} />
             </Flex>
             <Divider />
             <Text fontSize={"sm"} fontWeight={"bold"} mt={2}>
-              {detail.title}
+              {product.title}
             </Text>
             <Flex justifyContent={"space-between"} alignItems={"center"} mb={2}>
               <Box fontSize={"xs"}>
-                <Text>{formatRupiah(detail.price)}</Text>
+                <Text>{formatRupiah(product.price)}</Text>
               </Box>
               <Box fontSize={"xs"}>
                 <Text textAlign={"center"}>Stock:</Text>
@@ -247,7 +224,7 @@ const ProductPage = ({ params }) => {
               </Stack>
               <Stack fontSize={"sm"}>
                 <Text>Minimum Order 200</Text>
-                <AddToCartButton product={detail} />
+                <AddToCartButton product={product} />
               </Stack>
             </Flex>
           </Box>
@@ -256,11 +233,11 @@ const ProductPage = ({ params }) => {
       <Box bg={"white"} p={4} borderRadius={"lg"} mx={4}>
         <Text fontWeight={"bold"}>Product Description</Text>
         <Box>
-          <Text>{detail?.description}</Text>
+          <Text>{product?.description}</Text>
         </Box>
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default ProductPage;
+export default DetailProduct

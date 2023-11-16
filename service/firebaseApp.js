@@ -73,7 +73,8 @@ export const GetDocument = async (path) => {
 }
 
 export const GetTimestamp = () => {
-  return serverTimestamp();
+  const currentTimestamp = new Date();
+  return currentTimestamp;
 }
 
 

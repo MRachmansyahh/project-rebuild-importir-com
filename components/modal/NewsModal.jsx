@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Modal,
   ModalOverlay,
@@ -9,12 +8,13 @@ import {
   Box,
   Image,
   Text,
-  Link,
 } from "@chakra-ui/react";
+import ReactHtmlParser from 'react-html-parser';
 
-const NewsModal = ({ selectedCard, onClose }) => {
+const NewsModal = ({ news, onClose }) => {
+
   return (
-    <Modal isOpen={!!selectedCard} onClose={onClose} size="xl">
+    <Modal isOpen={!!news} onClose={onClose} size="xl">
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Description</ModalHeader>
@@ -24,20 +24,13 @@ const NewsModal = ({ selectedCard, onClose }) => {
             <Image
               mb={4}
               borderRadius="lg"
-              src={selectedCard?.featured_image}
-              alt={selectedCard?.title}
+              src={news?.featured_image}
+              alt={news?.title}
             />
-            <Text fontWeight="bold">{selectedCard?.title}</Text>
-            <Text>{selectedCard?.description}</Text>
+            <Text fontWeight="bold">{news?.title}</Text>
+            <Text>{news?.category_name}</Text>
             <Box my={4}>
-              <Text>Hi, Sibat Portir!</Text>
-              <Text>{`Berikut link recording untuk ${selectedCard?.title}`}</Text>
-              <Link href="/">
-                <Text color="blue.500" fontStyle="italic">
-                  TONTON DISINI
-                </Text>
-              </Link>
-              <Text>Selamat Menyaksikan!</Text>
+              <Text>{news?.description}</Text>
             </Box>
           </Box>
         </ModalBody>
