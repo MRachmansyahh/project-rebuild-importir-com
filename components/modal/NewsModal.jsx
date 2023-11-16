@@ -9,7 +9,6 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
-import ReactHtmlParser from 'react-html-parser';
 
 const NewsModal = ({ news, onClose }) => {
 
