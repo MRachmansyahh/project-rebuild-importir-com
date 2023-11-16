@@ -5,6 +5,8 @@ import OrderNow from "../button/OrderNow";
 
 const ProductCards = ({ products}) => {
 
+  console.log("INI PRODUK", products);
+
   return (
     <Box p={4}>
       <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 5 }} gap={4}>
