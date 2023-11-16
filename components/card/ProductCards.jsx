@@ -2,20 +2,13 @@ import { Box, Card, CardBody, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import React from "react";
 import { formatRupiah } from "@/constants";
 import OrderNow from "../button/OrderNow";
-import LoadMoreButton from "../button/LoadMore";
 
-const ProductCards = ({ products, count }) => {
-
-  console.log(count);
-
-
-  const displayedProducts = products.slice(0, count);
-  console.log(displayedProducts);
+const ProductCards = ({ products}) => {
 
   return (
     <Box p={4}>
       <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 5 }} gap={4}>
-        {displayedProducts.map((product) => (
+        {products.map((product) => (
           <Card key={product.product_id} maxW={"2xs"} boxShadow={"xl"}>
             <Image
               src={product.image}
@@ -37,7 +30,6 @@ const ProductCards = ({ products, count }) => {
           </Card>
         ))}
       </SimpleGrid>
-      {/* <LoadMoreButton /> */}
     </Box>
   );
 };
