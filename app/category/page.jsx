@@ -1,12 +1,11 @@
-import { getCategories } from "@/service/api";
 import { SimpleGrid, Box, Image, Text } from "@chakra-ui/react";
-const CategoryPage = async () => {
-  const categories = await getCategories();
-  console.log(categories);
+import { category } from "@/constants";
+const CategoryPage = () => {
+  
   return (
     <Box minH={"100vh"}>
       <SimpleGrid p={4} spacing={2} column={5} minChildWidth={"100px"}>
-        {categories.map((category) => (
+        {category.map((category) => (
           <Box
             key={category.id}
             as="button"
