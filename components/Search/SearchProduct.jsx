@@ -6,14 +6,14 @@ import { FiSearch } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 
 const SearchProducts = ({ page }) => {
-    const serachRef = useRef();
-    const router = useRouter();
+  const serachRef = useRef();
+  const router = useRouter();
 
-    const handleSearch = (event) => {
-        event.preventDefault()
-        const keyword = serachRef.current.value
-        router.push(`/${page}/${keyword}`)
-    }
+  const handleSearch = (event) => {
+    event.preventDefault();
+    const keyword = serachRef.current.value;
+    router.push(`/${page}/${keyword}`);
+  };
   return (
     <Box>
       <InputGroup maxW={"full"}>
@@ -23,7 +23,6 @@ const SearchProducts = ({ page }) => {
           color={"black"}
           bg={"white"}
           ref={serachRef}
-
         />
         <InputRightAddon as={"button"} onClick={handleSearch} bg={"black"}>
           <FiSearch as="button" color={"white"} />
@@ -33,4 +32,4 @@ const SearchProducts = ({ page }) => {
   );
 };
 
-export default SearchProducts
+export default SearchProducts;
