@@ -16,22 +16,12 @@ import { onAuthStateChanged} from "firebase/auth";
 import { auth } from "../../service/firebaseApp";
 import SeminarMemberCards from "../card/SeminarMemberCards ";
 import SeminarNonMemberCards from "../card/SeminarNonMemberCards";
+import AuthSeminar from "../Auth/AuthSeminar";
 
 const Section = () => {
-  const [isLogin, setIsLogin] = useState(null);
+  const user = auth.currentUser;
+  const login = user ? <SeminarMemberCards /> : <SeminarNonMemberCards />;
 
-  useEffect(() => {
-    const listenAuth = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setIsLogin(user);
-      } else {
-        setIsLogin(null);
-      }
-    });
-    return () => {
-      listenAuth();
-    };
-  }, []);
 
   return (
     <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4} padding={4}>
@@ -55,11 +45,11 @@ const Section = () => {
 
       <Box bg="white" p={4} borderRadius={"xl"} boxShadow={"xl"}>
         <Text fontWeight={"bold"} fontSize={"xl"}>
-          {isLogin ? "Seminar Member" : "Seminar Non Member"}
+          {user ? "Seminar Member" : "Seminar Non Member"}
         </Text>
 
         <Box>
-          {isLogin ? <SeminarMemberCards /> : <SeminarNonMemberCards />}
+          {login}
         </Box>
       </Box>
     </SimpleGrid>

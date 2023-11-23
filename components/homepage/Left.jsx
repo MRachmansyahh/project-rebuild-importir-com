@@ -94,7 +94,7 @@ const Left = () => {
           Category
         </Text>
 
-        <Stack overflowY="scroll" maxH="480px">
+        <Stack>
           {sidebarLinks.map((link) => (
             <Popover
               key={link.category}

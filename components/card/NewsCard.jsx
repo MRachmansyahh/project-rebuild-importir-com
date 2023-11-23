@@ -42,7 +42,7 @@ const NewsCard = ({ news, layout }) => {
             <Flex justifyContent="flex-end">
               <ArrowForwardIcon fontSize="xl" mr={2} />
             </Flex>
-            <Image src={card.featured_image} alt="image" />
+            <Image src={`https://importir.s3.ap-southeast-1.amazonaws.com/images/${card.featured_image}`} alt="image" />
             <Flex flexDir="column" mt={4}>
               <Text fontSize="sm" textAlign="start" fontWeight="bold">
                 {card.title}

@@ -46,7 +46,7 @@ const Right = async () => {
           </Link>
         </Flex>
 
-        <Flex overflowY="scroll" maxH="380px">
+        <Flex >
           <NewsCard news={news} layout={"vertical"} />
         </Flex>
       </Box>

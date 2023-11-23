@@ -8,17 +8,15 @@ const AuthSeminar = () => {
   const [isLogin, setIsLogin] = useState(null);
 
   useEffect(() => {
-    const listenAuth = onAuthStateChanged(auth, (user) => {
+    const user = auth.currentUser
       if (user) {
         setIsLogin(user);
       } else {
         setIsLogin(null);
       }
-    });
-    return () => {
-      listenAuth();
-    };
-  }, []);
+    }, []);
+
+  console.log("isLogin", isLogin);
 
   return (
     <>

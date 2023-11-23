@@ -13,6 +13,8 @@ import {
   signOut,
   onAuthStateChanged
 } from "firebase/auth";
+import HeaderLogin from "@/components/navbar/Header/HeaderLogin";
+import SeminarMemberCards from "@/components/card/SeminarMemberCards ";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDBtxAx2nFO5fFZYQDqhZE_i6sATZnCBaQ",
@@ -78,12 +80,21 @@ export const GetTimestamp = () => {
 }
 
 
-export const isUserLoggedIn = (callback) => {
+export const loginHeader = () => {
   onAuthStateChanged(auth, (user));
   if (user) {
-    callback(true, user);
+    <HeaderLogin />;
   } else {
-    callback(false, null);
+    <HeaderLogout />;
+  }
+}
+
+export const loginSeminar = () => {
+  onAuthStateChanged(auth, (user));
+  if (user) {
+    <SeminarMemberCards />
+  } else {
+    <SeminarNonMemberCards />
   }
 }
 

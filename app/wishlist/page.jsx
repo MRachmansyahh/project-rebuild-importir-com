@@ -1,19 +1,9 @@
-"use client";
+'use client'
 
-import OrderNow from "@/components/button/OrderNow";
+import RemoveProduct from "@/components/button/Remove";
 import ProductCards from "@/components/card/ProductCards";
-import { formatRupiah } from "@/constants";
 import { useWishlist } from "@/context/WishlistContext";
-import {
-  Box,
-  Button,
-  Card,
-  CardBody,
-  Flex,
-  Image,
-  SimpleGrid,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import React from "react";
 
 const WhishlistPage = () => {
@@ -29,10 +19,9 @@ const WhishlistPage = () => {
       </Flex>
 
       <Box>
+        <RemoveProduct product_id={wishlist.id} />
         <ProductCards products={wishlist} />
       </Box>
-      
-
     </Box>
   );
 };

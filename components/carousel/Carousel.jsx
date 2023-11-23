@@ -43,14 +43,14 @@ const ProductCarousel = () => {
   })
 
   return (
-    <Box position="relative">
+    <Box position="relative" h={"350px"}>
       <Box position="relative" overflow="hidden">
         {products.map((product, index) => (
           <div
             key={index}
             style={{ display: index === selectedImageIndex ? "block" : "none" }}
           >
-            <Image src={product.image} alt="Product" w="100%" h="auto" borderRadius={"lg"} />
+            <Image src={product.image} alt="Product" w="100%" h="350px" borderRadius={"lg"} />
           </div>
         ))}
         <Box

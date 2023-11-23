@@ -21,12 +21,13 @@ const HeroSection = () => {
         p={4}
         borderRadius={"xl"}
         boxShadow={"xl"}
-        maxH={"auto"}
+        maxH={"620px"}
+        overflowY={"auto"}
       >
         <Left />
       </GridItem>
 
-      <GridItem colSpan={{ base: 1, md: 1 }} maxH={"auto"}>
+      <GridItem colSpan={{ base: 1, md: 1 }} minH={"500px"}>
         <Middle />
       </GridItem>
 
@@ -36,7 +37,8 @@ const HeroSection = () => {
         p={4}
         borderRadius={"xl"}
         boxShadow={"xl"}
-        maxH={"auto"}
+        maxH={"620px"}
+        overflowY={"auto"}
       >
         <Right />
       </GridItem>

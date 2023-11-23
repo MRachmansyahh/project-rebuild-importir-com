@@ -49,7 +49,7 @@ const HeaderLogin = () => {
 
   return (
     <Flex>
-      <Flex align="flex-end" justify="flex-end">
+      <Flex align="flex-end" justify="flex-end" display={{base: "none", sm: "flex"}}>
         <Link href="/wishlist">
           <Button bg="none" variant="none" h={7}>
             <Icon as={BsSuitHeart} color="black" fontSize="xl" />
@@ -68,7 +68,7 @@ const HeaderLogin = () => {
           </Button>
         </Link>
       </Flex>
-      <Flex align="flex-end" justify="flex-end">
+      <Flex align="flex-end" justify="flex-end" display={{base: "none", sm: "flex"}}>
         <Link href="/cart">
           <Button bg="none" variant="none" h={7}>
             <Icon as={FiShoppingCart} color="black" fontSize="xl" />

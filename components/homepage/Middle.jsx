@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Icon, Stack, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Icon, Stack, Text, SimpleGrid } from "@chakra-ui/react";
 import { BiSolidCategory, BiNews } from "react-icons/bi";
 import { FaUserFriends, FaUserGraduate } from "react-icons/fa";
 import Carousel from "../carousel/Carousel";
@@ -6,7 +6,7 @@ import ProductCarousel from "../carousel/Carousel";
 
 const Middle = () => {
   return (
-    <Stack>
+    <Stack minH={"500px"}>
       <Box marginBottom={1} bg={"white"} borderRadius={"xl"} boxShadow={"xl"}>
         <ProductCarousel />
       </Box>
@@ -23,10 +23,12 @@ const Middle = () => {
         <Text fontSize="3xl" fontWeight="bold" textAlign={"center"}>
           Menu List
         </Text>
-        <Flex
-          justifyContent={{ base: "center", md: "space-between" }}
+        
+        <SimpleGrid
+          columns={4}
+          spacing={4}
           marginTop={2}
-          flexWrap={"wrap"}
+          w={"100%"}
         >
           <Button
             fontSize={13}
@@ -35,11 +37,11 @@ const Middle = () => {
             display={"flex"}
             flexDir={"column"}
             height={"160px"}
-            width={"120px"}
+            width={"100%"}
             mx={1}
             my={1}
           >
-            <Icon marginBottom={4} boxSize={10} as={FaUserGraduate} />
+            <Icon marginBottom={4} boxSize={{ base: 6, md: 10 }} as={FaUserGraduate} />
             Academy
           </Button>
           <Button
@@ -49,11 +51,11 @@ const Middle = () => {
             display={"flex"}
             flexDir={"column"}
             height={"160px"}
-            width={"120px"}
+            width={"100%"}
             mx={1}
             my={1}
           >
-            <Icon marginBottom={4} boxSize={10} as={BiSolidCategory} />
+            <Icon marginBottom={4} boxSize={{ base: 6, md: 10 }} as={BiSolidCategory} />
             Category
           </Button>
           <Button
@@ -63,11 +65,11 @@ const Middle = () => {
             display={"flex"}
             flexDir={"column"}
             height={"160px"}
-            width={"120px"}
+            width={"100%"}
             mx={1}
             my={1}
           >
-            <Icon marginBottom={4} boxSize={10} as={FaUserFriends} />
+            <Icon marginBottom={4} boxSize={{ base: 6, md: 10 }} as={FaUserFriends} />
             Consultation
           </Button>
           <Button
@@ -77,14 +79,14 @@ const Middle = () => {
             display={"flex"}
             flexDir={"column"}
             height={"160px"}
-            width={"120px"}
+            width={"100%"}
             mx={1}
             my={1}
           >
-            <Icon marginBottom={4} boxSize={10} as={BiNews} />
+            <Icon marginBottom={4} boxSize={{ base: 6, md: 10 }} as={BiNews} />
             News
           </Button>
-        </Flex>
+        </SimpleGrid>
       </Box>
     </Stack>
   );

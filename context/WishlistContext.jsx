@@ -9,7 +9,7 @@ const wishlistReducer = (state, action) => {
     case "ADD_TO_WISHLIST":
       return [...state, action.payload];
     case "REMOVE_FROM_WISHLIST":
-      return state.filter((item) => item.id !== action.payload);
+      return state.filter((product) => product.id !== action.payload);
     // Add other cases as needed
 
     default:

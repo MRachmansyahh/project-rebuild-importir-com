@@ -12,6 +12,7 @@ const Navigation = () => {
         display={{ base: "block", md: "none" }}
         px={4}
         py={2}
+        m={0}
         bg={"rgb(255, 214, 0)"}
       >
         <SearchProducts page={"search"}/>

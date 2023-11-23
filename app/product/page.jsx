@@ -1,7 +1,7 @@
 import HeaderProducts from '@/components/ProductList/Header'
+import ProductCards from '@/components/card/ProductCards';
 import { getProdukNatal, getProdukUnderSeratus } from '@/service/api';
 import { Box } from '@chakra-ui/react';
-import ProductCards from '@/components/card/ProductCards';
 
 const ProductsPage = async () => {
   const { products: underSeratusProducts, info: underSeratusInfo, slug: underSeratusSlug } = await getProdukUnderSeratus();

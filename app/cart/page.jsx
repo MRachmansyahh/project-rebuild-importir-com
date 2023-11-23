@@ -15,6 +15,7 @@ import {
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 import { useCart } from "@/context/CartContext";
 import { formatRupiah } from "@/constants";
+import RemoveCart from "@/components/button/Remove";
 const CartPage = () => {
   const { cart } = useCart();
   console.log("INI PRODUK DI CART", cart);
@@ -52,9 +53,11 @@ const CartPage = () => {
             p={6}
             spacing={4}
             borderRadius={"lg"}
+            my={4}
           >
             <Flex justifyContent={"center"} alignItems={"center"}>
-              <Checkbox isChecked />
+              <Checkbox defaultChecked />
+              <RemoveCart product_id={product.id} />
             </Flex>
             <Image src={product.image} alt={product.title} />
             <Box>
